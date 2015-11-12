@@ -1,14 +1,13 @@
 package com.tavi;
 
-import org.apache.commons.collections.MapUtils;
+import com.tavi.objects.FooFooObject;
+import com.tavi.objects.billing.ListOfBillingAdditionalOffersType;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Created by Tavi on 11/11/2015.
@@ -64,6 +63,17 @@ public class MapperMagician {
                 .forEach(attr1 -> System.out.println(attr1))
         ;
     }
+
+    public void mapUsingLambda(ListOfBillingAdditionalOffersType listOfCustomObjects) {
+        Map<OfferProperty, Map<Integer, List<BillingResponse>>> offersProperties =
+                responses.stream()
+                        .collect(groupingBy(r -> r.offerProperty,
+                                groupingBy(r -> r.boInstanceID)));
+
+        return offersProperties;
+    }
+
+
 
     public static void main(String [] args) {
         System.out.println("This is the beginning of it all.");

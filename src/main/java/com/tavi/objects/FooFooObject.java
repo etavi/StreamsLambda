@@ -1,5 +1,6 @@
-package com.tavi;
+package com.tavi.objects;
 
+import com.tavi.ObjectWithAttributes;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
